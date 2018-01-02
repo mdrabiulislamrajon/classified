@@ -16,7 +16,7 @@ class Listing extends Model
     {
     	return $query->where('live',true);
     }
-      public function scopeIsNotLive($query)
+    public function scopeIsNotLive($query)
     {
     	return $query->where('live',false);
     }

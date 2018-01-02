@@ -10,7 +10,9 @@ class CategoryController extends Controller
 {
     public function index(Area $area)
     {
-    	$categories = Category::get()->toTree();
+    	$categories = Category::with(['listings' => function($q) use($area){
+    		$q->isLive()->inArea($area);
+    	}])->get()->toTree();
     	return view('categories.index', compact('categories'));
     }
 }
