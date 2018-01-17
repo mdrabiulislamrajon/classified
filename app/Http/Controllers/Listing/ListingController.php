@@ -13,4 +13,13 @@ class ListingController extends Controller
     	$listings = Listing::with(['user','area'])->isLive()->inArea($area)->FromCategory($category)->LatestFirst()->get();
     	return view('listings.index',compact('listings','category'));
     }
+
+    public function show(Request $request,Area $area, Listing $listing)
+    {
+    	if(!$listing->live())
+    	{
+    		abort(404);
+    	}
+    	return view('listings.show', compact('listing'));
+    }
 }

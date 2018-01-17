@@ -1,7 +1,7 @@
  
  <div class="media">
  	<div class="media-body">
- 		<h5> <strong><a href="">{{ $listing->title }}</a></strong>
+ 		<h5> <strong><a href="{{ route('listing.show', [$area, $listing]) }}">{{ $listing->title }}</a></strong>
 			@if($area->children->count())
 				in {{ $listing->area->name }}
 			@endif
